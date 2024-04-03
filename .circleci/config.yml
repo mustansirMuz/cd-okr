@@ -50,6 +50,5 @@ workflows:
           dockerfile: Dockerfile
           auth:
             - aws-cli/setup
-          path: .
           repo: cd-okr
           tag: latest
