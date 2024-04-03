@@ -45,7 +45,7 @@ workflows:
   fastapi_backend:
     jobs:
       - build_and_test
-      - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
+      - aws-ecr/build_and_push_image: # Use the pre-defined `build-and-push-image` job
           dockerfile: Dockerfile
           path: .
           repo: cd-okr
