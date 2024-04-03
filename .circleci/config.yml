@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   python: circleci/python@2.1.1
+  aws-ecr: circleci/aws-ecr@9.0.2
 
 jobs:
   build_and_test:
@@ -38,9 +39,14 @@ jobs:
             DATABASE_URL: "postgresql://ubuntu:ubuntu@localhost:5432/fastapi"
             TEST_DATABASE_URL : "postgresql://ubuntu:ubuntu@localhost:5432/fastapi"
             TESTING: 1
-          
+      
 
 workflows:
   fastapi_backend:
     jobs:
       - build_and_test
+      - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
+          dockerfile: Dockerfile
+          path: .
+          repo: cd-okr
+          tag: latest
