@@ -49,8 +49,7 @@ workflows:
       - aws-ecr/build_and_push_image: # Use the pre-defined `build-and-push-image` job
           dockerfile: Dockerfile
           auth:
-            - aws-cli/setup:
-                profile: OIDC-USER
+            - aws-cli/setup
           path: .
           repo: cd-okr
           tag: latest
