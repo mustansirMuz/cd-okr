@@ -60,4 +60,4 @@ workflows:
             - aws-cli/setup
           family: 'cd-okr-service'
           cluster: cd-okr
-          container_image_name_updates: 'container=cd-okr-service,tag=latest'
+          container_image_name_updates: 'container=cd-okr,tag=latest'
