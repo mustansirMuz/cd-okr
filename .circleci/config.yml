@@ -53,7 +53,7 @@ workflows:
             - aws-cli/setup
           repo: cd-okr
           tag: latest
-      - aws-ecs/deploy-service-update:
+      - aws-ecs/deploy_service_update:
           requires:
             - aws-ecr/build_and_push_image
           auth:
