@@ -3,6 +3,7 @@ orbs:
   python: circleci/python@2.1.1
   aws-cli: circleci/aws-cli@4.0
   aws-ecr: circleci/aws-ecr@9.0.2
+  aws-ecs: circleci/aws-ecs@3.2.0
 
 jobs:
   build_and_test:
@@ -52,3 +53,11 @@ workflows:
             - aws-cli/setup
           repo: cd-okr
           tag: latest
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build_and_push_image
+          auth:
+            - aws-cli/setup
+          family: 'cd-okr-service'
+          cluster: cd-okr
+          container-image-name-updates: 'container=cd-okr-service,tag=latest'
